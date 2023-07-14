@@ -1,3 +1,3 @@
-## 说明readme）
+## 说明（readme）
 
 汇编的 demo。
