@@ -10,7 +10,7 @@ _start:
     mov $60, %rax
     syscall
 
-.type f8func,@function
+.type f8func, @function
 f8func:
     # 保存 rbp
     push %rbp
