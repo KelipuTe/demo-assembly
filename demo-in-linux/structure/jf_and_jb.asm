@@ -3,16 +3,16 @@
 _start:
     mov $1, %rax
 
-    # 跳转到 exit 标记处
-    jmp exit
-
+    jmp 1
+0:
     mov $2, %rax
 
     mov $0, %rdi
     mov $60, %rax
     syscall
-exit:
+1:
     mov $3, %rax
+    jmp 0
 
 	mov $0, %rdi
 	mov $60, %rax
