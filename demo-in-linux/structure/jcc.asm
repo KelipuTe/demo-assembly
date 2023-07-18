@@ -6,7 +6,7 @@ _start:
     mov $1, %rbx
     mov $2, %rcx
     cmp %rbx, %rcx
-    # 如果 rcx>rbx 则跳转到 exit 继续执行，这里是成立的
+    # 如果 rcx > rbx 则跳转到 exit 继续执行，这里是成立的
     jg exit
 
     mov $2, %rax

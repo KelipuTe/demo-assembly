@@ -1,20 +1,14 @@
 .section .text
 .global _start
+# 整数带进位的加法示例
 _start:
-    mov $1, %rax
+    # 这里会产生进位 cf = 1，ebx = 0x00000000
+    mov $0xffffffff, %ebx
+    add $1, %ebx
 
-    movq $0x7fffffffffffffff, %rax
-    add $1, %rax
-    # 如果产生了溢出，那么就会设置 cf 标志位，jc 指令就会跳转到 exit 处
-    jc exit
+    # ebx = 1 + ebx + cf = 2
+    adc $1, %ebx
 
-    mov $2, %rax
-    mov $0, %rdi
-    mov $60, %rax
-    syscall
-
-exit:
-    mov $3, %rax
 	mov $0, %rdi
 	mov $60, %rax
 	syscall

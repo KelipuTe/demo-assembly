@@ -3,21 +3,25 @@
 
 .section .text
 .global _start
+# 无符号整数乘法示例
 _start:
+    # 寄存器乘寄存器
+    # rax = rax * rbx
     mov $2, %rax
     mov $2, %rbx
-    # rax=rax*rbx
     mul %rbx
 
+    # 寄存器乘内存（带后缀）
+    # rax = rax * int1
     mov $2, %rax
-    # rax=rax*int1
     mull int1
 
-    mov $0xffffffffffffffff, %rax
-    mov $2, %rbx
-    # $0xffffffffffffffff * 2 = 0x1,ffff,ffff,ffff,fffe
-    # rdx=0x1 rax=0xffff,ffff,ffff,fffe
-    mul %rbx
+    # 计算结果超过一个寄存器的容量
+    # 0xffff,ffff * 2 = 0x1,ffff,fffe
+    # rdx=0x1，rax=0xffff,fffe
+    mov $0xffffffff, %eax
+    mov $2, %ebx
+    mul %ebx
 
     mov $0, %rdi
     mov $60, %rax

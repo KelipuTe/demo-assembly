@@ -1,26 +1,42 @@
 .section .data
     int1: .int 10
-    int2: .int 1
+    int2: .int 10
+    int3: .int 1
 
 .section .text
 .global _start
+# 整数减法示例
 _start:
-    mov $10, %rax
-
     # 寄存器减立即数
-    sub $1, %rax
+    mov $10, %rbx
+    sub $1, %rbx
+
     # 内存减立即数
     subl $1, int1
 
-    mov $1, %rbx
-
     # 寄存器减寄存器
-    sub %rbx, %rax
+    mov $10, %rbx
+    mov $1, %rcx
+    sub %rcx, %rbx
+
     # 内存减寄存器
-    sub %rbx, int1
+    mov $1, %rbx
+    sub %rbx, int2
 
     # 寄存器减内存
-    sub int2, %rax
+    mov $10, %rbx
+    sub int3, %rbx
+
+    # 这里会产生借位 cf = 1
+    mov $0x00000000, %ebx
+    sub $1, %ebx
+    # 如果产生了借位，那么 cf = 1，jc 就会跳转到 hasCarry 处
+    jc hasCarry
+
+    mov $1, %rax
+
+hasCarry:
+    mov $2, %rax
 
     mov $0, %rdi
     mov $60, %rax

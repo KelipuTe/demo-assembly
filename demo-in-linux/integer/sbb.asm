@@ -1,20 +1,14 @@
 .section .text
 .global _start
+# 带借位的整数减法示例
 _start:
-    mov $1, %rax
+    # 这里会产生借位 cf = 1，ebx = 0xffffffff
+    mov $0x00000000, %ebx
+    sub $1, %ebx
 
-    mov $0x8000000000000000, %rax
-    sbb $1, %rax
-    # 如果产生了借位，那么（无符号整数）就会设置 of 标志位，jmp 指令就会跳转到 exit 处
-    jo exit
+    # ebx = ebx- (1 + cf) = 0xfffffffd
+    sbb $1, %ebx
 
-    mov $2, %rax
-    mov $0, %rdi
-    mov $60, %rax
-    syscall
-
-exit:
-    mov $3, %rax
 	mov $0, %rdi
 	mov $60, %rax
 	syscall
