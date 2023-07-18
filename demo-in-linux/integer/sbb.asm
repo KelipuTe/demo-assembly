@@ -9,12 +9,12 @@ _start:
     jo exit
 
     mov $2, %rax
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall
 
 exit:
     mov $3, %rax
-	mov $1, %rdi
+	mov $0, %rdi
 	mov $60, %rax
 	syscall

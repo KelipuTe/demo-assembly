@@ -4,12 +4,13 @@
 
 .section .text
 .global _start
+# 打印全局变量的数组
 _start:
     mov $array1, %rdi
 
     call f8printArray
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall
 

@@ -15,6 +15,6 @@ _start:
     # 把立即数加到内存
     addl $1, int1
 
-	mov $1, %rdi
+	mov $0, %rdi
 	mov $60, %rax
 	syscall

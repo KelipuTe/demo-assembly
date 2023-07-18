@@ -7,6 +7,6 @@ loop1:
 	# 循环，cx 自动减 1，直到 cx 为 0
 	loop loop1
 
-	mov $1, %rdi
+	mov $0, %rdi
 	mov $60,%rax
 	syscall

@@ -22,6 +22,6 @@ _start:
     # 寄存器减内存
     sub int2, %rax
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall

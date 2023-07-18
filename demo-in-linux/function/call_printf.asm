@@ -3,8 +3,9 @@
 
 .section .text
 .global _start
+# 调用 c 库的 printf
 _start:
-    mov $1, %rdi
+    mov $0, %rdi
     mov $2, %rsi
 
     call f8callPrintf
@@ -17,7 +18,7 @@ _start:
     # 调用 printf
     call printf
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall
 

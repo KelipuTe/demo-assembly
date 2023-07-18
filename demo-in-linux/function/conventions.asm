@@ -1,12 +1,13 @@
 .section .text
 .global _start
+# 函数的约定
 _start:
-    mov $1, %rdi
+    mov $0, %rdi
     mov $2, %rsi
 
     call f8func
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall
 

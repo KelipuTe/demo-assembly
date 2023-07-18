@@ -8,12 +8,13 @@
 
 .section .text
 .global _start
+# 打印全局变量的结构体
 _start:
     mov $s6user, %rdi
 
     call f8printStruct
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall
 

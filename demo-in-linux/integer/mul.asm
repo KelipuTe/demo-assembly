@@ -19,6 +19,6 @@ _start:
     # rdx=0x1 rax=0xffff,ffff,ffff,fffe
     mul %rbx
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall

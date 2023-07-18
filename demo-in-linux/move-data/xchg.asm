@@ -13,6 +13,6 @@ _start:
     # 交换寄存器和内存的值
     xchg int1, %rcx
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall

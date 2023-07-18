@@ -1,5 +1,6 @@
 .section .text
 .global _start
+# 堆栈的基本使用方式
 _start:
     push $1
     push $2
@@ -7,7 +8,7 @@ _start:
 
     call f8func
 
-    mov $1, %rdi
+    mov $0, %rdi
     mov $60, %rax
     syscall
 
