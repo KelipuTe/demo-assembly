@@ -14,7 +14,7 @@
 
 .section .text
 .global _start
-# mov 的使用示例
+# 使用 mov 传输数据
 _start:
     # 传输立即数到寄存器
     movb $0x7f, %al

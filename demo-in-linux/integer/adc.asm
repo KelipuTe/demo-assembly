@@ -1,6 +1,6 @@
 .section .text
 .global _start
-# 整数带进位的加法示例
+# adc，整数带进位的加法
 _start:
     # 这里会产生进位 cf = 1，ebx = 0x00000000
     mov $0xffffffff, %ebx

@@ -5,7 +5,7 @@
 
 .section .text
 .global _start
-# 整数减法示例
+# sub，整数减法
 _start:
     # 寄存器减立即数
     mov $10, %rbx

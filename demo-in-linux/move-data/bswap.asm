@@ -1,5 +1,6 @@
 .section .text
 .global _start
+# bswap，翻转寄存器上的数据的字节序
 _start:
     mov $0x1122334455667788, %rax
     bswap %rax

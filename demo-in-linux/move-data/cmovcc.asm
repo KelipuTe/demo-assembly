@@ -1,5 +1,6 @@
 .section .text
 .global _start
+# cmov，带条件的 mov
 _start:
     mov $1, %rax
     mov $1, %rbx

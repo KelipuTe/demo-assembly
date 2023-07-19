@@ -4,7 +4,7 @@
 
 .section .text
 .global _start
-# 整数加法示例
+# add，整数加法
 _start:
     # 把立即数加到寄存器
 	mov $1, %rbx

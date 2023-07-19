@@ -1,6 +1,6 @@
 .section .text
 .global _start
-# 带借位的整数减法示例
+# sbb，带借位的整数减法
 _start:
     # 这里会产生借位 cf = 1，ebx = 0xffffffff
     mov $0x00000000, %ebx

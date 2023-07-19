@@ -3,7 +3,7 @@
 
 .section .text
 .global _start
-# 无符号整数乘法示例
+# mul，无符号整数乘法
 _start:
     # 寄存器乘寄存器
     # rax = rax * rbx

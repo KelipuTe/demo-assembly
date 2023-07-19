@@ -3,6 +3,7 @@
 
 .section .text
 .global _start
+# 使用 xchg 进行数据交换
 _start:
     mov $1, %rax
     mov $2, %rbx
