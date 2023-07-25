@@ -10,9 +10,7 @@
 _start:
     # 浮点数
 	flds float1
-	# st0 = float1
 	flds float2
-	# st0 = float2，st1 = float1
 
 	# 整数
 	fildl int1

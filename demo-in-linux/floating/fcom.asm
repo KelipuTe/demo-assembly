@@ -15,22 +15,14 @@ _start:
     fstsw
     sahf
 
+    FCOMI %st(0),%st(1)
+
     jg s1gs0
     jl s1ls0
 
     mov $1, %rax
-
-	mov $0, %rdi
-	mov $60, %rax
-	syscall
-
 s1gs0:
     mov $2, %rax
-
-	mov $0, %rdi
-	mov $60, %rax
-	syscall
-
 s1ls0:
     mov $3, %rax
 
