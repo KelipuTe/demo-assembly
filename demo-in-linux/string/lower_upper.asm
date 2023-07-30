@@ -1,6 +1,6 @@
 .section .data
-    # 总共 14 个字节，包括结尾的 \0
-    string1: .string "hello, world\n"
+    # 总共 13 个字节，不包括结尾的
+    string1: .string "hello, world"
 
 .section .text
 .global _start

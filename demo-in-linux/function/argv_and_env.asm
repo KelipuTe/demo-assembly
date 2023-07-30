@@ -19,8 +19,8 @@ _start:
     add %rax, %rdi
     call showEnv
 
-    mov $60, %rax
     mov $0, %rdi
+    mov $60, %rax
     syscall
 
 # 打印命令行参数
