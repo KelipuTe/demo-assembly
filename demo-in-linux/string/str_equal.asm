@@ -1,7 +1,6 @@
 .section .data
     # 总共 5 个字节，不包括结尾的 \0
     string1: .string "hello"
-    # 总共 5 个字节，不包括结尾的 \0
     string2: .string "heiio"
     # 总共 11 个字节，不包括结尾的 \0
     string3: .string "hello world"
@@ -47,9 +46,9 @@ _start:
     call printf
     mov $0, %rax
 
-	mov $0, %rdi
-	mov $60, %rax
-	syscall
+    mov $60, %rax
+    mov $0, %rdi
+    syscall
 
 # 判断两个字符串是否相等
 .type strEqual, @function
@@ -57,7 +56,7 @@ strEqual:
     push %rbp
     mov %rsp, %rbp
 
-    sub $16, %rsp
+    sub $32, %rsp
     movq %rdi, -8(%rbp)
     movq %rsi, -16(%rbp)
 

@@ -19,8 +19,8 @@ _start:
     add %rax, %rdi
     call showEnv
 
-    mov $0, %rdi
     mov $60, %rax
+    mov $0, %rdi
     syscall
 
 # 打印命令行参数
@@ -28,7 +28,7 @@ _start:
 showArgv:
     push %rbp
     mov %rsp, %rbp
-    sub $32, %rsp
+    sub $64, %rsp
 
     # 起始地址
     movq %rdi, -8(%rbp)
@@ -87,7 +87,7 @@ showArgv:
 showEnv:
     push %rbp
     mov %rsp, %rbp
-    sub $16, %rsp
+    sub $32, %rsp
 
     # 起始地址
     movq %rdi, -8(%rbp)

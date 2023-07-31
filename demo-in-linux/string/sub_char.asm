@@ -34,9 +34,9 @@ _start:
     call printf
     mov $0, %rax
 
-	mov $0,%rdi
-	mov $60,%rax
-	syscall
+    mov $60, %rax
+    mov $0, %rdi
+    syscall
 
 # 在字符串中寻找指定字符，并返回找到的第一个指定字符的下标
 .type subChar, @function
@@ -44,7 +44,7 @@ subChar:
     push %rbp
     mov %rsp, %rbp
 
-    sub $16, %rsp
+    sub $32, %rsp
     movq %rdi, -8(%rbp)
     movl %esi, -12(%rbp)
     movb %dl, -16(%rbp)

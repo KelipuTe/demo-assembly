@@ -1,17 +1,18 @@
 .section .data
     array1: .int 1, 2, 3, 4, 5
-    printf1: .string "array1 item=%d\n"
+    stringPrintf1: .string "array1 item=%d\n"
 
 .section .text
 .global _start
 # 打印全局变量的数组
 _start:
     mov $array1, %rdi
+    mov $5, %rsi
 
     call f8printArray
 
-    mov $0, %rdi
     mov $60, %rax
+    mov $0, %rdi
     syscall
 
 .type f8printArray, @function
@@ -26,9 +27,10 @@ f8printArray:
     # 循环遍历的 i
     movl $0, -8(%rbp)
 
-    jmp 1f
+    jmp 1f ar
 0:
-    mov $printf1, %rdi
+    mov $stringPrintf1, %rdi
+
     # rax = 数组的起始地址
     movq -16(%rbp), %rax
     # 本次循环的 i
@@ -39,15 +41,15 @@ f8printArray:
     add %rcx, %rax
     # 把地址上的值取出来放到 rsi 上
     mov (%rax), %rsi
-
     call printf
-    # 把 printf 的返回值擦掉
+
+    # 把 printf 的返回值擦掉，不擦掉的话，有可能会影响下一次循环的判断
     mov $0, %rax
 
     # i++
     addl $1, -4(%rbp)
 1:
-    cmpl $4,-4(%rbp)
+    cmpl $4, -4(%rbp)
     jle 0b
 
     leave

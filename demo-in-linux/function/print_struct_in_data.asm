@@ -4,7 +4,7 @@
         name: .string "aaa"
         age: .int 18
 
-    printf1: .string "id=%d, name=%s, age=%d\n"
+    stringPrintf1: .string "id=%d, name=%s, age=%d\n"
 
 .section .text
 .global _start
@@ -14,8 +14,8 @@ _start:
 
     call f8printStruct
 
-    mov $0, %rdi
     mov $60, %rax
+    mov $0, %rdi
     syscall
 
 .type f8printStruct,@function
@@ -23,26 +23,23 @@ f8printStruct:
     push %rbp
     mov %rsp, %rbp
 
-    sub $32, %rsp
+    sub $16, %rsp
+    movq %rdi, -8(%rbp)
 
-    # 把结构体的起始地址存下来
-    mov %rdi, -16(%rbp)
-
-    mov $printf1, %rdi
+    mov $stringPrintf1, %rdi
 
     # rax = 结构体的起始地址
-    movq -16(%rbp), %rax
+    movq -8(%rbp), %rax
     # id
     movl (%rax), %esi
     # name，打印字符串的时候，给的是字符串起始地址
-    movq -16(%rbp), %rbx
+    movq %rax, %rbx
     add $4, %rbx
     movq %rbx, %rdx
     # age
     movl 8(%rax), %ecx
-
+    movq $0, %rax
     call printf
 
     leave
     ret
-

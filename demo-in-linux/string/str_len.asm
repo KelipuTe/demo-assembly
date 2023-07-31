@@ -28,9 +28,9 @@ _start:
     mov $0, %rax
     call printf
     mov $0, %rax
-    
-    mov $0, %rdi
+
     mov $60, %rax
+    mov $0, %rdi
     syscall
 
 # 计算字符串长度
@@ -39,7 +39,7 @@ strLen:
     push %rbp
     mov %rsp, %rbp
 
-    sub $8, %rsp
+    sub $16, %rsp
     movq %rdi, -8(%rbp)
 
     # 遍历字符串找 \0

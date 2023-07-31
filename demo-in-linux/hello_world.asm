@@ -13,7 +13,7 @@ _start:
     # 相当于 c 的 printf("hello, world\n");
     mov $1, %rax
     mov $1, %rdi
-    movq $helloworld, %rsi
+    mov $helloworld, %rsi
     mov $13, %rdx
     syscall
 
