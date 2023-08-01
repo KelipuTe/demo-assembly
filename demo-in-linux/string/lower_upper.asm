@@ -1,39 +1,39 @@
 .section .data
-    # 总共 12 个字节，不包括结尾的 \0
+    # 12 个字节，不包括结尾的 \0
     string1: .string "hello, world"
     string2: .string "HELLO, WORLD"
 
-    stringPrintf1: .string "before %s\n"
-    stringPrintf2: .string "after %s\n"
+    strPrintf1: .string "before %s\n"
+    strPrintf2: .string "after %s\n"
 
 .section .text
 .global _start
 _start:
-	mov $stringPrintf1, %rdi
+	mov $strPrintf1, %rdi
     lea string1, %rsi
     mov $0, %rax
     call printf
     mov $0, %rax
 
     lea string1, %rdi
-    call toUpper
+    call f8toUpper
 
-    mov $stringPrintf2, %rdi
+    mov $strPrintf2, %rdi
     lea string1, %rsi
     mov $0, %rax
     call printf
     mov $0, %rax
 
-    mov $stringPrintf1, %rdi
+    mov $strPrintf1, %rdi
     lea string2, %rsi
     mov $0, %rax
     call printf
     mov $0, %rax
 
     lea string2, %rdi
-    call toLower
+    call f8toLower
 
-    mov $stringPrintf2, %rdi
+    mov $strPrintf2, %rdi
     lea string2, %rsi
     mov $0, %rax
     call printf
@@ -44,8 +44,8 @@ _start:
     syscall
 
 # 字符串转大写
-.type toUpper, @function
-toUpper:
+.type f8toUpper, @function
+f8toUpper:
     push %rbp
     mov %rsp, %rbp
 
@@ -74,8 +74,8 @@ notLower:
     ret
 
 # 字符串转小写
-.type toLower, @function
-toLower:
+.type f8toLower, @function
+f8toLower:
     push %rbp
     mov %rsp, %rbp
 

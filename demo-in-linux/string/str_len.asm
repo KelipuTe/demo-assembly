@@ -1,18 +1,18 @@
 .section .data
-    # 总共 5 个字节，不包括结尾的 \0
+    # 5 个字节，不包括结尾的 \0
     string1: .string "hello"
-    # 总共 12 个字节，不包括结尾的 \0
+    # 12 个字节，不包括结尾的 \0
     string2: .string "hello, world"
 
-    stringPrintf: .string "length of %s is %d\n"
+    strPrintf: .string "length of %s is %d\n"
 
 .section .text
 .global _start
 _start:
     mov $string1, %rdi
-    call strLen
+    call f8strLen
 
-    mov $stringPrintf, %rdi
+    mov $strPrintf, %rdi
     mov $string1, %rsi
     mov %rax, %rdx
     mov $0, %rax
@@ -20,9 +20,9 @@ _start:
     mov $0, %rax
 
     mov $string2, %rdi
-    call strLen
+    call f8strLen
 
-    mov $stringPrintf, %rdi
+    mov $strPrintf, %rdi
     mov $string2, %rsi
     mov %rax, %rdx
     mov $0, %rax
@@ -34,8 +34,8 @@ _start:
     syscall
 
 # 计算字符串长度
-.type strLen, @function
-strLen:
+.type f8strLen, @function
+f8strLen:
     push %rbp
     mov %rsp, %rbp
 

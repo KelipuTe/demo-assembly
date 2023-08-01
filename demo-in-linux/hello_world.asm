@@ -1,6 +1,6 @@
 # 数据段
 .section .data
-    # 字符串，不包括结尾的 '\0'，13 个字节
+    # 13 个字节，不包括结尾的 \0
     helloworld: .string "hello, world\n"
 
 # 代码段

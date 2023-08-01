@@ -1,8 +1,8 @@
 .section .data
-    # 总共 12 个字节，不包括结尾的 \0
+    # 12 个字节，不包括结尾的 \0
     string1: .string "hello, world"
 
-    stringPrintf: .string "char %c at index %d of %s\n"
+    strPrintf: .string "char %c at index %d of %s\n"
 
 .section .text
 .global _start
@@ -11,9 +11,9 @@ _start:
     mov $13, %rsi
     # 立即数也可以是字符，但是，不能是字符串
     mov $'w', %rdx
-    call subChar
+    call f8subChar
 
-    mov $stringPrintf, %rdi
+    mov $strPrintf, %rdi
     mov $'w', %rsi
     mov %rax, %rdx
     mov $string1, %rcx
@@ -24,9 +24,9 @@ _start:
     mov $string1, %rdi
     mov $13, %rsi
     mov $'a', %rdx
-    call subChar
+    call f8subChar
 
-    mov $stringPrintf, %rdi
+    mov $strPrintf, %rdi
     mov $'a', %rsi
     mov %rax, %rdx
     mov $string1, %rcx
@@ -39,8 +39,8 @@ _start:
     syscall
 
 # 在字符串中寻找指定字符，并返回找到的第一个指定字符的下标
-.type subChar, @function
-subChar:
+.type f8subChar, @function
+f8subChar:
     push %rbp
     mov %rsp, %rbp
 

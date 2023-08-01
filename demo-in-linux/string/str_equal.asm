@@ -1,20 +1,20 @@
 .section .data
-    # 总共 5 个字节，不包括结尾的 \0
+    # 5 个字节，不包括结尾的 \0
     string1: .string "hello"
     string2: .string "heiio"
-    # 总共 11 个字节，不包括结尾的 \0
+    # 11 个字节，不包括结尾的 \0
     string3: .string "hello world"
 
-    stringPrintf: .string "%s and %s, ret=%d\n"
+    strPrintf: .string "%s and %s, ret=%d\n"
 
 .section .text
 .global _start
 _start:
     lea string1, %rsi
 	lea string1, %rdi
-	call strEqual
+	call f8strEqual
 
-    mov $stringPrintf, %rdi
+    mov $strPrintf, %rdi
     mov $string1, %rsi
     mov $string1, %rdx
     mov %rax, %rcx
@@ -24,9 +24,9 @@ _start:
 
 	lea string1, %rsi
 	lea string2, %rdi
-	call strEqual
+	call f8strEqual
 
-    mov $stringPrintf, %rdi
+    mov $strPrintf, %rdi
     mov $string1, %rsi
     mov $string2, %rdx
     mov %rax, %rcx
@@ -36,9 +36,9 @@ _start:
 
     lea string1, %rsi
     lea string3, %rdi
-    call strEqual
+    call f8strEqual
 
-    mov $stringPrintf, %rdi
+    mov $strPrintf, %rdi
     mov $string1, %rsi
     mov $string3, %rdx
     mov %rax, %rcx
@@ -51,8 +51,8 @@ _start:
     syscall
 
 # 判断两个字符串是否相等
-.type strEqual, @function
-strEqual:
+.type f8strEqual, @function
+f8strEqual:
     push %rbp
     mov %rsp, %rbp
 
@@ -97,7 +97,7 @@ strEqualNotEqual:
     # 下标从 0 开始的，需要再 -1
     dec %ebx
     mov %rsi, %rax
-    jmp strEqualEnd
+    jmp f8strEqualEnd
 
 strEqualEnd:
     leave
